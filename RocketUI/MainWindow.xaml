@@ -5,20 +5,295 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RocketUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize">
+        Title="MainWindow" Height="600" Width="1000" WindowStyle="None" ResizeMode="NoResize" Background="#545863">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
+        <Grid.RowDefinitions> <!--Creates this upper menu nav bar -->
+            <RowDefinition Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions> <!--Creates column that splits main window in two parts-->
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Grid Background="#454851" Grid.ColumnSpan="2">
+        <Grid Background="#454851" Grid.ColumnSpan="2" MouseDown="Grid_MouseDown"> <!--Filling nav bar with content-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="START" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFD0DDD7" FontFamily="Fonts/#Tilt Neon" FontSize="25" FontWeight="Medium" Grid.ColumnSpan="2"/>
+            <TextBlock Text="MENU" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFD0DDD7" FontFamily="Fonts/#Tilt Neon" FontSize="25" FontWeight="Medium" Grid.ColumnSpan="2" Margin="0,0,10,0"/>
+            <TextBlock Text="JOIN" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FFD0DDD7" FontFamily="Fonts/#Tilt Neon" FontSize="25" FontWeight="Medium" Grid.ColumnSpan="3" Margin="20,0,0,0"/>
+
+            <Button Content="--"  
+                        Foreground="#FFD0DDD7" 
+                        FontWeight="Medium"
+                        Margin="0,0,0,0"
+                        Grid.Column="12"
+                        FontSize="17">
+
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Tilt Neon"/>
+                        <Setter Property="Background" Value="#FF157F1F"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#11691A"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="40" 
+                                    Height="25" 
+                                    CornerRadius="8" 
+                                    Background="{TemplateBinding Background}">
+
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+            <Button Content="▢"  
+                        Foreground="#FFD0DDD7" 
+                        FontWeight="ExtraBold"
+                        Margin="0,0,0,0"
+                        Grid.Column="13"
+                        FontSize="16">
+
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Tilt Neon"/>
+                        <Setter Property="Background" Value="#3689FC"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#0E71FB"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="40" 
+                                    Height="25" 
+                                    CornerRadius="8" 
+                                    Background="{TemplateBinding Background}">
+
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+            <Button Content="X"  
+                        Foreground="#FFD0DDD7" 
+                        FontWeight="Medium"
+                        Margin="0,0,0,0"
+                        Grid.Column="14"
+                        FontSize="16"
+                        >
+
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Tilt Neon"/>
+                        <Setter Property="Background" Value="#FF9C0008"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF800007"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="40" 
+                                    Height="25" 
+                                    CornerRadius="8" 
+                                    Background="{TemplateBinding Background}">
+
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+        </Grid>
+
+        <StackPanel Grid.Row="1"
+                    VerticalAlignment="Center"
+                    Margin="30,0,0,0">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="50" Height="50" Source="Images/shuttle.png" RenderOptions.BitmapScalingMode="Fant"/>
+                    <TextBlock Text="JOIN NOW" FontSize="30" FontWeight="Medium" FontFamily="Fonts/#Tilt Neon" VerticalAlignment="Center" Foreground="#FFD0DDD7" Margin="10,0,0,0"/>
+                </StackPanel>
+
+                <TextBlock Text="Welcome on mars" FontSize="25" FontWeight="Medium" FontFamily="Fonts/#Tilt Neon" Foreground="#FFD0DDD7"/>
+                <TextBlock Text="Welcome on mars2" FontSize="25" FontWeight="Medium" FontFamily="Fonts/#Tilt Neon" Foreground="#FFD0DDD7"/>
+                <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec risus egestas, imperdiet mauris in, gravida magna. Mauris maximus, odio vitae lacinia laoreet, enim ipsum cursus dolor, ut cursus risus enim eu mauris. Praesent porta nibh sit amet risus cursus, et commodo nulla ultrices. Donec quis lorem nisl. Sed euismod commodo arcu." 
+                       FontSize="12" 
+                       FontWeight="Medium" 
+                       FontFamily="Fonts/#Tilt Neon" 
+                       Foreground="#FFD0DDD7"
+                       TextWrapping="Wrap"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,15,0,0">
+                <Button Content="JOIN US"  
+                        Foreground="#FFD0DDD7" 
+                        FontWeight="Medium"
+                        Margin="0,0,25,0">
+                    
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Tilt Neon"/>
+                            <Setter Property="Background" Value="#FF157F1F"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#11691A"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="100" 
+                                    Height="25" 
+                                    CornerRadius="12" 
+                                    Background="{TemplateBinding Background}">
+
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
+
+                <Button Content="LOGIN" 
+                        Foreground="#FFD0DDD7" 
+                        FontWeight="Medium">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Tilt Neon"/>
+                            <Setter Property="Background" Value="#2F3137"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#26272C"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="100" 
+                                    Height="25" 
+                                    CornerRadius="12" 
+                                    Background="{TemplateBinding Background}">
+
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
+            </StackPanel>
+        </StackPanel>
+
+        <Grid Grid.Column="1"
+              Grid.RowSpan="2"
+              Margin="160,-365,-610, 85"
+              Panel.ZIndex="-1">
+
+            <Grid.RenderTransform>
+                <RotateTransform Angle="50"/>
+            </Grid.RenderTransform>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="-350,250,-255,-250">
+
+                <StackPanel>
+                    <Border Width="700"
+                            Height="35"
+                            Background="#26272C"
+                            Margin="150,0,0,0"
+                            CornerRadius="20"/>
+
+                    <Border Width="700"
+                            Height="35"
+                            Background="#11691A"
+                            Margin="0,15,0,0"
+                            CornerRadius="20"/>
+
+                    <Border Width="700"
+                            Height="35"
+                            Background="#D0DDD7"
+                            Margin="75,15,0,0"
+                            CornerRadius="20"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <Border Width="700"
+                            Height="35"
+                            Background="#26272C"
+                            Margin="150,0,0,0"
+                            CornerRadius="20"/>
+
+                    <Border Width="700"
+                            Height="35"
+                            Background="#11691A"
+                            Margin="0,15,0,0"
+                            CornerRadius="20"/>
+
+                    <Border Width="700"
+                            Height="35"
+                            Background="#D0DDD7"
+                            Margin="75,15,0,0"
+                            CornerRadius="20"/>
+                </StackPanel>
+
+            </StackPanel>
+            
             
         </Grid>
+        
     </Grid>
 </Window>
