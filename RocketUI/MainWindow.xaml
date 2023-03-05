@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RocketUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000" WindowStyle="None" ResizeMode="NoResize" Background="#26272C" >
-    
+        Title="Bag Tracker" Height="600" Width="1000" WindowStyle="None" ResizeMode="NoResize" Background="#26272C" AllowsTransparency="True">
+
+
+
     <Grid>
         <Grid.RowDefinitions> <!--Creates this upper menu nav bar -->
             <RowDefinition Height="50"/>
@@ -38,7 +40,7 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="START" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFD0DDD7" FontFamily="Fonts/#Tilt Neon" FontSize="25" FontWeight="Medium" Grid.ColumnSpan="2"/>
-            <TextBlock Text="MENU" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFD0DDD7" FontFamily="Fonts/#Tilt Neon" FontSize="25" FontWeight="Medium" Grid.ColumnSpan="2" Margin="0,0,15,0"/>
+            <TextBlock Text="DEMO" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFD0DDD7" FontFamily="Fonts/#Tilt Neon" FontSize="25" FontWeight="Medium" Grid.ColumnSpan="2" Margin="0,0,15,0"/>
             <TextBlock Text="JOIN" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FFD0DDD7" FontFamily="Fonts/#Tilt Neon" FontSize="25" FontWeight="Medium" Grid.ColumnSpan="3" Margin="20,0,0,0"/>
 
             <Button Content="--"  
@@ -46,16 +48,16 @@
                         FontWeight="Medium"
                         Margin="0,0,0,0"
                         Grid.Column="12"
-                        FontSize="17">
+                        FontSize="17" Click="Minimize">
 
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Tilt Neon"/>
-                        <Setter Property="Background" Value="#FF157F1F"/>
+                        <Setter Property="Background" Value="#11691A"/>
                         <Setter Property="Cursor" Value="Hand"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#11691A"/>
+                                <Setter Property="Background" Value="#0b4210"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -81,7 +83,7 @@
                         FontWeight="ExtraBold"
                         Margin="0,0,0,0"
                         Grid.Column="13"
-                        FontSize="16">
+                        FontSize="16" Click="Maximize">
 
                 <Button.Style>
                     <Style TargetType="Button">
@@ -116,7 +118,7 @@
                         FontWeight="Medium"
                         Margin="0,0,0,0"
                         Grid.Column="14"
-                        FontSize="16"
+                        FontSize="16" Click="closeApp"
                         >
 
                 <Button.Style>
@@ -154,46 +156,117 @@
                     Margin="30,0,0,0">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Image Width="100" Height="100" Source="Images/bag.png" RenderOptions.BitmapScalingMode="Fant"/>
+                    <Image Width="96" Height="96" Source="Images/bag2.png" RenderOptions.BitmapScalingMode="Fant"/>
                     <TextBlock Text="BAG TRACKER" FontSize="45" FontWeight="Medium" FontFamily="Fonts/#Tilt Neon" VerticalAlignment="Center" Foreground="#FFD0DDD7" Margin="10,0,0,0"/>
                 </StackPanel>
 
                 <TextBlock Text="The ultimate tool for serious sneaker resellers" FontSize="23" FontWeight="Medium" FontFamily="Fonts/#Tilt Neon" Foreground="#FFD0DDD7" Margin="0,25,0,0"/>
-                <TextBlock Text="Introducing the ultimate solution for sneaker resellers: our cutting-edge software that enables you to effortlessly track your spending and earnings with professional-grade accuracy.." 
+                
+                <StackPanel x:Name="DescContent" Height="210"> <!--This is a Stack panel that contains description-->
+                    <TextBlock Text="Introducing the ultimate solution for sneaker resellers: our cutting-edge software that enables you to effortlessly track your spending and earnings with professional-grade accuracy." 
                        FontSize="14" 
                        FontWeight="Medium" 
                        FontFamily="Fonts/#Tilt Neon" 
                        Foreground="#FFD0DDD7"
                        TextWrapping="Wrap" Margin="0,19,0,0"/>
-                <TextBlock Text="No more guesswork or manual calculations – our innovative platform will help you take control of your finances and maximize your profits." 
+                    <TextBlock Text="No more guesswork or manual calculations – our innovative platform will help you take control of your finances and maximize your profits." 
                        FontSize="14" 
                        FontWeight="Medium" 
                        FontFamily="Fonts/#Tilt Neon" 
                        Foreground="#FFD0DDD7"
                        TextWrapping="Wrap" Margin="0,19,0,0"/>
-                <TextBlock Text="With advanced analytics and customizable reporting, you can make informed business decisions and stay ahead of the competition. Elevate your reselling game with our software." 
+                    <TextBlock Text="With advanced analytics and customizable reporting, you can make informed business decisions and stay ahead of the competition. Elevate your reselling game with our software." 
                        FontSize="14" 
                        FontWeight="Medium" 
                        FontFamily="Fonts/#Tilt Neon" 
                        Foreground="#FFD0DDD7"
                        TextWrapping="Wrap" Margin="0,19,0,0"/>
+                </StackPanel>
+                <StackPanel x:Name="LoginContent" Height="210" Visibility="Collapsed">
+                    <!--This is a Stack panel that contains login form-->
+                    <Grid>
+                        <Image Width="41" Height="41" Source="Images/user.png" RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left" Margin="40,0,0,0" Panel.ZIndex="1"/>
+
+                        <TextBox x:Name="username" Text="" Background="#D0DDD7" FontFamily="Fonts/#Tilt Neon" Width="400" Height="50" BorderBrush="{x:Null}" Margin="0,20,0,19" FontSize="22" VerticalAlignment="Center" Padding="50,10,0,0" GotFocus="hidetext">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="19"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                </Style>
+                            </TextBox.Resources>  
+                        </TextBox>
+                    </Grid>
+
+                    <Grid>
+                        <Image Width="40" Height="40" Source="Images/key.png" RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left" Margin="40,0,0,20" Panel.ZIndex="1"/>
+
+                        <PasswordBox x:Name="passwordBox" Background="#D0DDD7" FontFamily="Fonts/#Tilt Neon" Width="400" Height="50" BorderBrush="{x:Null}" Margin="0,0,0,19" FontSize="22" VerticalAlignment="Center" Padding="50,10,0,0">
+                            
+                            <PasswordBox.Template>
+                                <ControlTemplate TargetType="{x:Type PasswordBox}">
+                                    <Border CornerRadius="19" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ScrollViewer x:Name="PART_ContentHost" />
+                                    </Border>
+                                </ControlTemplate>
+                            </PasswordBox.Template>
+                        </PasswordBox>
+                    </Grid>
+
+
+                    <Button Content="SUBMIT" x:Name="submitlogin"
+                        Foreground="#FFD0DDD7" 
+                        FontWeight="Medium" HorizontalAlignment="Center" Margin="0,0,10,0" Click="ShowLogin">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="TextElement.FontFamily" Value="Fonts/#Tilt Neon"/>
+                                <Setter Property="Background" Value="#555862"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="FontSize" Value="22"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#474a52"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="150" 
+                                    Height="50" 
+                                    CornerRadius="19" 
+                                    Background="{TemplateBinding Background}">
+
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+
+
+                </StackPanel>
+
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal"
+            <StackPanel Orientation="Horizontal" x:Name="ButtonsPanel"
                         Margin="0,40,0,0">
                 <Button Content="JOIN US"  
                         Foreground="#FFD0DDD7" 
-                        FontWeight="Medium" HorizontalAlignment="Center" Margin="0,0,10,0">
+                        FontWeight="Medium" HorizontalAlignment="Center" Margin="0,0,10,0" Click="JoinUs">
                     
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Tilt Neon"/>
-                            <Setter Property="Background" Value="#FF157F1F"/>
+                            <Setter Property="Background" Value="#11691A"/>
                             <Setter Property="Cursor" Value="Hand"/>
                             <Setter Property="FontSize" Value="22"/>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#11691A"/>
+                                    <Setter Property="Background" Value="#0b4210"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -216,9 +289,9 @@
 
                 </Button>
 
-                <Button Content="LOGIN" 
+                <Button Content="LOGIN" x:Name="ShowModal"
                         Foreground="#FFD0DDD7" 
-                        FontWeight="Medium" HorizontalAlignment="Center" Margin="0,0,10,0">
+                        FontWeight="Medium" HorizontalAlignment="Center" Margin="0,0,10,0" Click="ShowLogin">
 
                     <Button.Style>
                         <Style TargetType="Button">
@@ -252,7 +325,7 @@
 
                 <Button Content="LEARN MORE" 
                         Foreground="#FFD0DDD7" 
-                        FontWeight="Medium">
+                        FontWeight="Medium" Click="LearnMore">
 
                     <Button.Style>
                         <Style TargetType="Button">
@@ -299,36 +372,40 @@
                         Margin="-350,250,-255,-250">
 
                 <StackPanel>
-                    <Border Width="600"
+                    <Border x:Name="up1"
+                            Width="600"
                             Height="35"
                             Background="#11691A"
                             Margin="0,0,0,15"
                             CornerRadius="20"/>
-                    <Border Width="700"
+                    <Border x:Name="up2"
+                            Width="700"
                             Height="35"
                             Background="#D0DDD7"
                             Margin="100,0,0,15"
                             CornerRadius="20"/>
-                    <Border Width="700"
+                    <Border x:Name="up3"
+                            Width="700"
                             Height="35"
                             Background="#555862"
                             Margin="150,0,0,0"
                             CornerRadius="20"/>
 
-                    <Border Width="700"
+                    <Border x:Name="up4"
+                            Width="700"
                             Height="35"
                             Background="#11691A"
                             Margin="0,15,0,0"
                             CornerRadius="20"/>
 
-                    <Border Width="700"
+                    <Border x:Name="up5"
+                            Width="700"
                             Height="35"
                             Background="#D0DDD7"
                             Margin="75,15,0,0"
                             CornerRadius="20"/>
                     
                 </StackPanel>
-
                 <StackPanel>
                     <Border Width="280"
                             Height="35"
@@ -363,6 +440,7 @@
             
             
         </Grid>
-        
+
     </Grid>
+
 </Window>
