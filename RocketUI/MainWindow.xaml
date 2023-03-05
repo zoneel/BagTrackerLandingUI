@@ -7,8 +7,6 @@
         mc:Ignorable="d"
         Title="Bag Tracker" Height="600" Width="1000" WindowStyle="None" ResizeMode="NoResize" Background="#26272C" AllowsTransparency="True">
 
-
-
     <Grid>
         <Grid.RowDefinitions> <!--Creates this upper menu nav bar -->
             <RowDefinition Height="50"/>
@@ -39,10 +37,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="START" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFD0DDD7" FontFamily="Fonts/#Tilt Neon" FontSize="25" FontWeight="Medium" Grid.ColumnSpan="2"/>
-            <TextBlock Text="DEMO" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFD0DDD7" FontFamily="Fonts/#Tilt Neon" FontSize="25" FontWeight="Medium" Grid.ColumnSpan="2" Margin="0,0,15,0"/>
-            <TextBlock Text="JOIN" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FFD0DDD7" FontFamily="Fonts/#Tilt Neon" FontSize="25" FontWeight="Medium" Grid.ColumnSpan="3" Margin="20,0,0,0"/>
-
+            <!--Window control buttons-->
             <Button Content="--"  
                         Foreground="#FFD0DDD7" 
                         FontWeight="Medium"
@@ -183,11 +178,12 @@
                        TextWrapping="Wrap" Margin="0,19,0,0"/>
                 </StackPanel>
                 <StackPanel x:Name="LoginContent" Height="210" Visibility="Collapsed">
+                    
                     <!--This is a Stack panel that contains login form-->
                     <Grid>
                         <Image Width="41" Height="41" Source="Images/user.png" RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left" Margin="40,0,0,0" Panel.ZIndex="1"/>
 
-                        <TextBox x:Name="username" Text="" Background="#D0DDD7" FontFamily="Fonts/#Tilt Neon" Width="400" Height="50" BorderBrush="{x:Null}" Margin="0,20,0,19" FontSize="22" VerticalAlignment="Center" Padding="50,10,0,0" GotFocus="hidetext">
+                        <TextBox x:Name="username" Text="" Background="#D0DDD7" FontFamily="Fonts/#Tilt Neon" Width="400" Height="50" BorderBrush="{x:Null}" Margin="0,20,0,19" FontSize="22" VerticalAlignment="Center" Padding="50,10,0,0">
                             <TextBox.Resources>
                                 <Style TargetType="{x:Type Border}">
                                     <Setter Property="CornerRadius" Value="19"/>
@@ -249,24 +245,80 @@
 
 
                 </StackPanel>
+                <StackPanel x:Name="JoinContent" Height="210" Visibility="Collapsed">
+
+                    <!--This is a Stack panel that contains login form-->
+                    <TextBlock Text="Due to high demand, we are currently only accepting new users on a waiting list basis. By joining our waiting list, you will be among the first to know when we are ready to onboard new users." 
+                       FontSize="14" 
+                       FontWeight="Medium" 
+                       FontFamily="Fonts/#Tilt Neon" 
+                       Foreground="#FFD0DDD7"
+                       TextWrapping="Wrap" Margin="0,19,0,0"/>
+                    <Grid>
+                        <Image Width="41" Height="41" Source="Images/user.png" RenderOptions.BitmapScalingMode="Fant" HorizontalAlignment="Left" Margin="40,0,0,0" Panel.ZIndex="1"/>
+
+                        <TextBox x:Name="email" Text="email" Background="#D0DDD7" FontFamily="Fonts/#Tilt Neon" Width="400" Height="50" BorderBrush="{x:Null}" Margin="0,20,0,19" FontSize="22" VerticalAlignment="Center" Padding="50,10,0,0" GotFocus="hidetext">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="19"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                    </Grid>
+                    <Button Content="SUBMIT" x:Name="submitjoin"
+                        Foreground="#FFD0DDD7" 
+                        FontWeight="Medium" HorizontalAlignment="Center" Margin="0,0,10,0">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="TextElement.FontFamily" Value="Fonts/#Tilt Neon"/>
+                                <Setter Property="Background" Value="#555862"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="FontSize" Value="22"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#474a52"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="150" 
+                                    Height="50" 
+                                    CornerRadius="19" 
+                                    Background="{TemplateBinding Background}">
+
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+
+                </StackPanel>
 
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" x:Name="ButtonsPanel"
-                        Margin="0,40,0,0">
-                <Button Content="JOIN US"  
+                        Margin="0,55,0,0">
+                <Button Content="JOIN US" x:Name="joinus"
                         Foreground="#FFD0DDD7" 
                         FontWeight="Medium" HorizontalAlignment="Center" Margin="0,0,10,0" Click="JoinUs">
                     
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Tilt Neon"/>
-                            <Setter Property="Background" Value="#11691A"/>
+                            <Setter Property="Background" Value="#555862"/>
                             <Setter Property="Cursor" Value="Hand"/>
                             <Setter Property="FontSize" Value="22"/>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#0b4210"/>
+                                    <Setter Property="Background" Value="#555862"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -323,19 +375,19 @@
 
                 </Button>
 
-                <Button Content="LEARN MORE" 
+                <Button Content="LEARN MORE" x:Name="learnmore"
                         Foreground="#FFD0DDD7" 
                         FontWeight="Medium" Click="LearnMore">
 
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Tilt Neon"/>
-                            <Setter Property="Background" Value="#555862"/>
+                            <Setter Property="Background" Value="#11691A"/>
                             <Setter Property="Cursor" Value="Hand"/>
                             <Setter Property="FontSize" Value="22"/>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#474a52"/>
+                                    <Setter Property="Background" Value="#11691A"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -359,6 +411,7 @@
             </StackPanel>
         </StackPanel>
 
+        <!--Visual moving borders-->
         <Grid Grid.Column="1"
               Grid.RowSpan="2"
               Margin="160,-365,-610, 85"

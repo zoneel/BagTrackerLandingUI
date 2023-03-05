@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Media.Animation;
-using System.Security.Cryptography.X509Certificates;
 
 namespace RocketUI
 {
@@ -26,12 +16,13 @@ namespace RocketUI
         {
             InitializeComponent();
 
+
         }
         bool animbool = true;
 
         public void animation()
         {
-            if(animbool)
+            if (animbool)
             {
                 DoubleAnimation animation = new DoubleAnimation();
                 animation.Duration = TimeSpan.FromSeconds(2);
@@ -67,18 +58,20 @@ namespace RocketUI
             }
         }
 
+        public void buttonAnimation()
+        {
+            ColorAnimation bttnAnim = new ColorAnimation();
+            bttnAnim.Duration = TimeSpan.FromSeconds(1);
+            bttnAnim.To = Colors.Red;
+        }
+
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(e.LeftButton == MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
                 DragMove();
             }
-        }
-
-        private void Button_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
         }
 
         private void closeApp(object sender, RoutedEventArgs e)
@@ -93,7 +86,7 @@ namespace RocketUI
         bool zm = true;
         private void Maximize(object sender, RoutedEventArgs e)
         {
-            if(zm == true)
+            if (zm == true)
             {
                 this.WindowState = WindowState.Maximized;
                 zm = false;
@@ -106,32 +99,48 @@ namespace RocketUI
 
         }
 
+        Color gcolor = (Color)ColorConverter.ConvertFromString("#555862");
+        Color greencolor = (Color)ColorConverter.ConvertFromString("#11691A");
         private void ShowLogin(object sender, RoutedEventArgs e)
         {
-            DescContent.Visibility = Visibility.Collapsed;  
+
+            DescContent.Visibility = Visibility.Collapsed;
             LoginContent.Visibility = Visibility.Visible;
+            JoinContent.Visibility = Visibility.Collapsed;
             animation();
+
+            joinus.Background = new SolidColorBrush(gcolor);
+            learnmore.Background = new SolidColorBrush(gcolor);
+            ShowModal.Background = new SolidColorBrush(greencolor);
+
         }
 
         private void LearnMore(object sender, RoutedEventArgs e)
         {
             DescContent.Visibility = Visibility.Visible;
             LoginContent.Visibility = Visibility.Collapsed;
+            JoinContent.Visibility = Visibility.Collapsed;
             animation();
+
+            joinus.Background = new SolidColorBrush(gcolor);
+            learnmore.Background = new SolidColorBrush(greencolor);
+            ShowModal.Background = new SolidColorBrush(gcolor);
         }
 
-        private void username_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
-        }
 
         private void hidetext(object sender, RoutedEventArgs e)
         {
-            username.Text = string.Empty;
+            email.Text = string.Empty;
         }
 
         private void JoinUs(object sender, RoutedEventArgs e)
         {
+            DescContent.Visibility = Visibility.Collapsed;
+            LoginContent.Visibility = Visibility.Collapsed;
+            JoinContent.Visibility = Visibility.Visible;
+            joinus.Background = new SolidColorBrush(greencolor);
+            learnmore.Background = new SolidColorBrush(gcolor);
+            ShowModal.Background = new SolidColorBrush(gcolor);
             animation();
         }
     }
